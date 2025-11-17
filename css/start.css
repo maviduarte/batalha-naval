@@ -1,0 +1,360 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: #0c192c;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* fundo da página */
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.bolhas {
+    position: absolute;
+    display: flex;
+}
+.bolhas span {
+    z-index: -1;
+    width: 30px;
+    height: 30px;
+    background: #F5AB35;
+    margin: 0 4px;
+    border-radius: 50%;
+    box-shadow: 0 0 0 10px #F5AB3544, 
+    0 0 50px #F5AB3544,
+    0 0 100px #F5AB3544;
+    animation: animate calc(150s / var(--i)) linear infinite;
+}
+.bolhas span:nth-of-type(even) {
+    background: #2dc3ff;
+    box-shadow: 0 0 0 10px #2dc3ff44, 
+    0 0 50px #2dc3ff,
+    0 0 100px #2dc3ff;
+}
+
+@keyframes animate {
+    0% {
+        transform: translateY(100vh) scale(0);
+    }
+    100% {
+        transform: translateY(-10vh) scale(1);
+    }
+}
+
+/* customização da scrollbar */
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #2dc3ff25;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1E88E5;
+    border-radius: 10px;
+    border: 1px solid #0D47A1;
+    box-shadow: 0 0 0 1px #2dc3ff44, 
+    0 0 8px #2197c573,
+    0 0 25px #2197c573;
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #0D47A1;
+    border: 1px solid #1E88E5;
+    box-shadow: 0 0 0 1px #2197c544, 
+    0 0 8px #196c8d73,
+    0 0 25px #196c8d73;
+}
+
+/* customização da scrollbar */
+
+.container {
+    position: absolute;
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* área do jogo */
+
+.game-board {
+    position: absolute;
+    width: 100%;
+    height: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* tabela do jogo */
+
+#game table tr:before {
+	content: attr(data-row);
+	margin-right: -1em;
+	color: white;
+    font-family: 'Candara', sans-serif;
+	position: relative;
+	left: -1.3em;
+	top: 1em;
+}
+#game table tr:first-child td:before {	
+	content: attr(data-col);
+	top: -2.5em;
+	left: 1em;
+	position: relative;
+	color: white;
+}
+#game table {
+    position: relative;
+    display: table;
+    background-color: #0c192cb6;
+    border-radius: 12px;
+    border-collapse: separate;
+	border: 0.1em #0e4a8f solid;
+    padding: 30px 20px 10px 30px;
+}
+#game td {
+	height:	2.8em;
+	width: 2.8em;
+	background-color: #3b91db;
+	cursor: crosshair;
+}
+#game td:hover {
+	background-color: #1565C0;
+}
+
+@font-face {
+    font-family: 'Barbatos';
+    src: url('../files/Barbatos.ttf') format('truetype');
+}
+
+/* header do jogo */
+
+.header {
+    position: absolute;
+    top: -4em;
+}
+.header h1 {
+    color: #fff;
+    font-size: 5rem;
+    letter-spacing: 2px;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Barbatos', sans-serif;
+    user-select: none;
+    text-shadow: 5px 5px 5px black, 2px 10px 50px #f5ab35af;
+	animation: swing 5s linear infinite;
+}
+
+@keyframes swing {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    10% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+    20% {
+        transform: translate(-1px, 1px) rotate(1deg);
+    }
+    30% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    40% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+    50% {
+        transform: translate(-1px, 1px) rotate(1deg);
+    }
+    60% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+    70% {
+        transform: translate(-1px, -1px) rotate(-1deg);
+    }
+    80% {
+        transform: translate(-1px, 1px) rotate(1deg);
+    }
+    90% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+}
+
+/* botões de ação */
+
+.buttons {
+    display: flex;
+    flex-direction: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 41.5rem;
+}
+
+.buttons button {
+    width: 100%;
+    border: none;
+    background-color: #2dc3ff;
+    box-shadow: 0 0 0 10px #2dc3ff44, 
+    0 0 20px #2dc3ff,
+    0 0 40px #2dc3ff;
+    padding: 10px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    transition: 0.3s;
+    font-family: 'Candara', sans-serif;
+    font-weight: bold;
+}
+
+.buttons button:hover {
+    background-color: #2dc3ff73;
+    scale: 0.98;
+    box-shadow: 0 0 0 10px #2dc3ff44, 
+    0 0 20px #14516973,
+    0 0 40px #14516973;
+    transform: translateY(4px);
+}
+
+/* botão de reiniciar */
+
+.restart-button button {
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+    padding: 0;
+    font-size: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* botão de ranking */
+
+.score-button button {
+    background-color: #FF9B0F;
+    box-shadow: 0 0 0 10px #FF9B0F44, 
+    0 0 20px #FF9B0F,
+    0 0 40px #FF9B0F;
+}
+.score-button button:hover {
+    background-color: #B76E00;
+    box-shadow: 0 0 0 10px #FF9B0F44, 
+    0 0 20px #FF9B0F73,
+    0 0 40px #FF9B0F73;
+}
+
+/* botão do manual */
+
+.manual-button button {
+    background-color: #1565C0;
+    box-shadow: 0 0 0 10px #1565C044, 
+    0 0 20px #1565C0,
+    0 0 40px #1565C0;
+}
+
+.manual-button button:hover {
+    background-color: #114f96;
+    box-shadow: 0 0 0 10px #1565C044, 
+    0 0 20px #1565C073,
+    0 0 40px #1565C073;
+}
+
+/* Checkbox do Som */
+
+.sound-checkbox {
+    display: flex;
+    position: absolute;
+    top: 103%;
+    right: 103%;
+    padding-left: 32px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: white;
+    font-family: 'Candara', sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.sound-checkbox:hover {
+    color: #adadad;
+}
+
+.sound-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkstyle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px #00000033;
+}
+
+.sound-checkbox:hover input ~ .checkstyle {
+    background-color: #adadad;
+    scale: 0.98;
+}
+
+.sound-checkbox input:checked ~ .checkstyle {
+    background-color: #2dc3ff;
+}
+
+.sound-checkbox input:checked ~ .checkstyle:hover {
+    background-color: #1565C0;
+}
+
+.checkstyle:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.sound-checkbox input:checked ~ .checkstyle:after {
+  display: block;
+}
+
+.sound-checkbox .checkstyle:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}

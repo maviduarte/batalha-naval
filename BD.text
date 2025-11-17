@@ -1,0 +1,15 @@
+CREATE DATABASE IF NOT EXISTS `batalha_naval_db`;
+
+USE `batalha_naval_db`;
+
+DROP TABLE IF EXISTS `ranking`;
+CREATE TABLE IF NOT EXISTS `ranking` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `jogador` varchar(100) NOT NULL,
+  `bombas` int NOT NULL,
+  `acertos` int NOT NULL,
+  `taxa` float NOT NULL,
+  `resultado` varchar(20) NOT NULL,
+  `data_jogo` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+);
